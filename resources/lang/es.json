@@ -1,4 +1,6 @@
 {
+    "voyager::generic.remember_me": "Recuérdame",
+    "voyager::generic.bread": "BREAD",
     "voyager::generic.home": "Home",
     "voyager::generic.logout": "Cerrar Sesión",
     "voyager::media.title": "Título",
@@ -11,11 +13,11 @@
     "voyager::bread.order_ident_column": "Order display column",
     "voyager::bread.order_ident_column_ph": "The column which is displayed in the order page",
     "voyager::bread.order_direction": "Order direction",
-    "voyager::generic.ascending": "Ascending",
-    "voyager::generic.descending": "Descending",
     "voyager::bread.default_search_key": "Default server-side search field",
     "voyager::bread.default_search_key_ph": "The field will be pre-selected for server side searching",
     "voyager::bread.scope": "Scope",
+    "voyager::generic.ascending": "Ascending",
+    "voyager::generic.descending": "Descending",
     "voyager::compass.welcome": "Welcome to the Voyager Compass. Every good app needs a compass to point them in the right direction. In this section you will find many resources and administrative tasks to help guide you as you build out your application.",
     "voyager::compass.resources.title": "Resources",
     "voyager::compass.resources.text": "Voyager resources to help you find things quicker",
@@ -34,5 +36,7 @@
     "voyager::compass.logs.date": "Date",
     "voyager::compass.logs.content": "Content",
     "voyager::compass.logs.download_file": "Download file",
-    "voyager::compass.logs.delete_file": "Delete file"
+    "voyager::compass.logs.delete_file": "Delete file",
+    "voyager::database.browse_bread": "Browse BREAD",
+    "voyager::database.create_model_table": "Crear modelo para esta tabla"
 }
