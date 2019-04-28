@@ -1,5 +1,8 @@
 <?php
 
+use App\Widgets\Customer;
+use App\Widgets\Product;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -149,7 +152,8 @@ return [
         ],
 
         'widgets' => [
-
+            Product::class,
+            Customer::class
         ],
 
     ],
