@@ -1,4 +1,3 @@
-{{--{{dd($options)}}--}}
 @if(isset($options->model) && isset($options->type))
 
     @if(class_exists($options->model))
@@ -13,24 +12,23 @@
                     $relationshipData = (isset($data)) ? $data : $dataTypeContent;
                     $model = app($options->model);
                     $query = $model::where($options->key,$relationshipData->{$options->column})->first();
-
                 @endphp
 
-                @if(isset($query))
-                    {{-- si queremos mostrar el enlace a una relación--}}
-                    @if (auth()->user()->role_id === \App\User::ADMIN)
-                        <p>
-                            <a href="{{ route('voyager.'.Voyager::model('DataType')->whereName($options->table)->first()->slug.'.show', $query->{$options->key}) }}">
-                                {{ $query->{$options->label} }}
-                            </a>
-                        </p>
-                    @else
-                        <p>{{ $query->{$options->label} }}</p>
-                    @endif
+{{--                @if(isset($query))--}}
+{{--                    --}}{{-- si queremos mostrar el enlace a una relación--}}
+{{--                    @if (auth()->user()->role_id === \App\User::ADMIN)--}}
+{{--                        <p>--}}
+{{--                            <a href="{{ route('voyager.'.Voyager::model('DataType')->whereName($options->table)->first()->slug.'.show', $query->{$options->key}) }}">--}}
+{{--                                {{ $query->{$options->label} }}--}}
+{{--                            </a>--}}
+{{--                        </p>--}}
+{{--                    @else--}}
+{{--                        <p>{{ $query->{$options->label} }}</p>--}}
+{{--                    @endif--}}
 
-                @else
-                    <p>{{ __('voyager::generic.no_results') }}</p>
-                @endif
+{{--                @else--}}
+{{--                    <p>{{ __('voyager::generic.no_results') }}</p>--}}
+{{--                @endif--}}
 
             @else
 
@@ -39,40 +37,39 @@
                     data-get-items-route="{{route('voyager.' . $dataType->slug.'.relation')}}"
                     data-get-items-field="{{$row->field}}"
                 >
-                    @php
-                        $model = app($options->model);
+{{--                    @php--}}
+{{--                        $model = app($options->model);--}}
+{{--                        $query = $model::where($options->key, $dataTypeContent->{$options->column})->get();--}}
+{{--                    @endphp--}}
 
-                        $query = $model::where($options->key, $dataTypeContent->{$options->column})->get();
-                    @endphp
+{{--                    @if(!$row->required)--}}
+{{--                        <option value="">{{__('voyager::generic.none')}}</option>--}}
+{{--                    @endif--}}
 
-                    @if(!$row->required)
-                        <option value="">{{__('voyager::generic.none')}}</option>
-                    @endif
-
-                    @foreach($query as $relationshipData)
-                        <option
-                            value="{{ $relationshipData->{$options->key} }}" @if($dataTypeContent->{$options->column} == $relationshipData->{$options->key}){{ 'selected="selected"' }}@endif>{{ $relationshipData->{$options->label} }}</option>
-                    @endforeach
+{{--                    @foreach($query as $relationshipData)--}}
+{{--                        <option--}}
+{{--                            value="{{ $relationshipData->{$options->key} }}" @if($dataTypeContent->{$options->column} == $relationshipData->{$options->key}){{ 'selected="selected"' }}@endif>{{ $relationshipData->{$options->label} }}</option>--}}
+{{--                    @endforeach--}}
                 </select>
 
             @endif
 
         @elseif($options->type == 'hasOne')
 
-            @php
+{{--            @php--}}
 
-                $relationshipData = (isset($data)) ? $data : $dataTypeContent;
+{{--                $relationshipData = (isset($data)) ? $data : $dataTypeContent;--}}
 
-                $model = app($options->model);
-                $query = $model::where($options->column, '=', $relationshipData->id)->first();
+{{--                $model = app($options->model);--}}
+{{--                $query = $model::where($options->column, '=', $relationshipData->id)->first();--}}
 
-            @endphp
+{{--            @endphp--}}
 
-            @if(isset($query))
-                <p>{{ $query->{$options->label} }}</p>
-            @else
-                <p>{{ __('voyager::generic.no_results') }}</p>
-            @endif
+{{--            @if(isset($query))--}}
+{{--                <p>{{ $query->{$options->label} }}</p>--}}
+{{--            @else--}}
+{{--                <p>{{ __('voyager::generic.no_results') }}</p>--}}
+{{--            @endif--}}
 
         @elseif($options->type == 'hasMany')
 
@@ -157,42 +154,42 @@
                     @else
                         <ul>
                             @foreach($selected_values as $selected_value)
-                                <li>{{ $selected_value }}</li>
+{{--                                <li>{{ $selected_value }}</li>--}}
                             @endforeach
                         </ul>
                     @endif
                 @endif
 
             @else
-                <select
-                    class="form-control @if(isset($options->taggable) && $options->taggable == 'on') select2-taggable @else select2-ajax @endif"
-                    name="{{ $relationshipField }}[]" multiple
-                    data-get-items-route="{{route('voyager.' . $dataType->slug.'.relation')}}"
-                    data-get-items-field="{{$row->field}}"
-                    @if(isset($options->taggable) && $options->taggable == 'on')
-                    data-route="{{ route('voyager.'.\Illuminate\Support\Str::slug($options->table).'.store') }}"
-                    data-label="{{$options->label}}"
-                    data-error-message="{{__('voyager::bread.error_tagging')}}"
-                    @endif
-                >
+{{--                <select--}}
+{{--                    class="form-control @if(isset($options->taggable) && $options->taggable == 'on') select2-taggable @else select2-ajax @endif"--}}
+{{--                    name="{{ $relationshipField }}[]" multiple--}}
+{{--                    data-get-items-route="{{route('voyager.' . $dataType->slug.'.relation')}}"--}}
+{{--                    data-get-items-field="{{$row->field}}"--}}
+{{--                    @if(isset($options->taggable) && $options->taggable == 'on')--}}
+{{--                    data-route="{{ route('voyager.'.\Illuminate\Support\Str::slug($options->table).'.store') }}"--}}
+{{--                    data-label="{{$options->label}}"--}}
+{{--                    data-error-message="{{__('voyager::bread.error_tagging')}}"--}}
+{{--                    @endif--}}
+{{--                >--}}
 
-                    @php
-                        $selected_values = isset($dataTypeContent) ? $dataTypeContent->belongsToMany($options->model, $options->pivot_table)->get()->map(function ($item, $key) use ($options) {
-                            return $item->{$options->key};
-                        })->all() : array();
-                        $relationshipOptions = app($options->model)->all();
-                    @endphp
+{{--                    @php--}}
+{{--                        $selected_values = isset($dataTypeContent) ? $dataTypeContent->belongsToMany($options->model, $options->pivot_table)->get()->map(function ($item, $key) use ($options) {--}}
+{{--                            return $item->{$options->key};--}}
+{{--                        })->all() : array();--}}
+{{--                        $relationshipOptions = app($options->model)->all();--}}
+{{--                    @endphp--}}
 
-                    @if(!$row->required)
-                        <option value="">{{__('voyager::generic.none')}}</option>
-                    @endif
+{{--                    @if(!$row->required)--}}
+{{--                        <option value="">{{__('voyager::generic.none')}}</option>--}}
+{{--                    @endif--}}
 
-                    @foreach($relationshipOptions as $relationshipOption)
-                        <option
-                            value="{{ $relationshipOption->{$options->key} }}" @if(in_array($relationshipOption->{$options->key}, $selected_values)){{ 'selected="selected"' }}@endif>{{ $relationshipOption->{$options->label} }}</option>
-                    @endforeach
+{{--                    @foreach($relationshipOptions as $relationshipOption)--}}
+{{--                        <option--}}
+{{--                            value="{{ $relationshipOption->{$options->key} }}" @if(in_array($relationshipOption->{$options->key}, $selected_values)){{ 'selected="selected"' }}@endif>{{ $relationshipOption->{$options->label} }}</option>--}}
+{{--                    @endforeach--}}
 
-                </select>
+{{--                </select>--}}
 
             @endif
 

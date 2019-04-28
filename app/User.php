@@ -10,6 +10,9 @@ class User extends \TCG\Voyager\Models\User
 {
     use Notifiable;
 
+    const ADMIN = 1;
+    const CUSTOMER = 3;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -36,4 +39,9 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function customer()
+    {
+        return $this->hasOne(Customer::class);
+    }
 }
